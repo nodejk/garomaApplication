@@ -1,0 +1,43 @@
+<div class="backdrop" [ngStyle]="{ display: display }"></div>
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: display, 'backdrop-filter': 'blur(5px)' }"
+>
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Shopping Cart</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div *ngFor="let cartItem of cartItems">
+            <app-cart-item [cartItem]="cartItem"></app-cart-item>
+          </div>
+          <div class="d-flex justify-content-end">
+            <h5>
+              Cart Total:
+              <span class="price text-success">{{
+                cartTotal | currency: "EUR"
+              }}</span>
+            </h5>
+          </div>
+
+          <div class="modal-footer border-top-0 d-flex justify-content-between">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="onCloseHandler()"
+            >
+              Back to shopping
+            </button>
+            <button type="button" class="btn btn-success">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

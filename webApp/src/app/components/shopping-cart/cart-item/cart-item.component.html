@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-2">
+    <img src="{{ cartItem.picture }}" width="128" />
+  </div>
+
+  <div class="col-md-4 text-left">
+    <h5 class="font-weight-bold">{{ cartItem.name }}</h5>
+    <div class="d-flex flex-row product-desc">
+      <div class="color">
+        <span class="text-grey">Price:</span
+        ><span class="font-weight-bold">{{
+          cartItem.price | currency: "EUR"
+        }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2 text-right">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-warning" (click)="decrementQuantity()">-</button>
+      </div>
+      <div class="col text-center">
+        <h5>{{ cartItem.quantity }}</h5>
+      </div>
+      <div class="col">
+        <button class="btn btn-success" (click)="incrementQuantity()">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 text-center">
+    <h5>
+      {{ cartItem.price * cartItem.quantity | currency: "EUR" }}
+    </h5>
+  </div>
+
+  <div class="col-md-1 text-right">
+    <button class="btn btn-danger" (click)="deleteItem()">X</button>
+  </div>
+
+  <div class="mt-2 col-md-12"></div>
+</div>
