@@ -35,10 +35,9 @@ describe("UNIT TEST FOR THE API: ", () => {
 
   test("fetched data contains all the required keys", async () => {
     const response = await request(app).get("/products");
-    const productFetch = JSON.parse(response.body)[0];
+    const productFetch = JSON.parse(response.text)[0];
 
     const keyProps = ["id", "price", "picture", "colour", "size", "name"];
-
     for (var key of keyProps) {
       expect(productFetch).toHaveProperty(key);
     }
